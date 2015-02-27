@@ -1,0 +1,95 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>pgDev</groupId>
+  <artifactId>DisguiseCraft</artifactId>
+  <version>5.1</version>
+  <name>DisguiseCraft ${project.version}</name>
+  <url>http://dev.bukkit.org/server-mods/disguisecraft/</url>
+  
+  <scm>
+  	<url>git://gitorious.org/disguisecraft/disguisecraft.git</url>
+  </scm>
+  
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+  
+  <repositories>
+    <repository>
+      <id>shadowvolt-repo</id>
+      <url>http://ci.shadowvolt.com/plugin/repository/everything/</url>
+    </repository>
+  </repositories>
+  
+  <dependencies>
+    <dependency>
+      <groupId>org.spigotmc</groupId>
+      <artifactId>spigot</artifactId>
+      <version>1.8-R0.1-SNAPSHOT</version>
+      <!--<scope>system</scope>
+      <systemPath>D:\Dropbox\Java Programs\bukkit-apis\spigot-1.8-R0.1-SNAPSHOT.jar</systemPath>-->
+    </dependency>
+    <dependency>
+      <groupId>com.comphenix.protocol</groupId>
+      <artifactId>ProtocolLib</artifactId>
+      <version>3.6.0-SNAPSHOT</version>
+      <optional>true</optional>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <defaultGoal>clean package</defaultGoal>
+    <directory>target</directory>
+    <outputDirectory>target/classes</outputDirectory>
+    <finalName>DisguiseCraft</finalName>
+    <sourceDirectory>${basedir}/src</sourceDirectory>
+    
+    <resources>
+      <resource>
+        <targetPath>.</targetPath>
+        <filtering>true</filtering>
+        <directory>${basedir}</directory>
+        <includes>
+          <include>plugin.yml</include>
+        </includes>
+      </resource>
+    </resources>
+
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.1</version>
+        <configuration>
+          <source>1.6</source>
+          <target>1.6</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>2.1</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>2.9</version>
+        <configuration>
+          <outputDirectory>target/apidocs</outputDirectory>
+          <reportOutputDirectory>target/apidocs</reportOutputDirectory>
+          
+          <show>public</show>
+          <links>
+            <link>http://jd.bukkit.org/rb/apidocs/</link>
+            <link>http://ci.shadowvolt.com/job/ProtocolLib/javadoc/</link>
+          </links>
+          <footer>Generated on ${maven.build.timestamp}</footer>
+          <sourceFileIncludes>
+          	<include>pgDev/bukkit/DisguiseCraft/*.java</include>
+          	<include>pgDev/bukkit/DisguiseCraft/api/*.java</include>
+          	<include>pgDev/bukkit/DisguiseCraft/disguise/*.java</include>
+          </sourceFileIncludes>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
